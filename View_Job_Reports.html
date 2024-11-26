@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Test Run Data</title>
+    <style>
+        /* Original CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #fefae0;
+        }
+        header {
+            background-color: #283618;
+            background-size: cover;
+            background-position: center;
+            color: #fefae0;
+            padding: 20px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+        h1 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+        h2 {
+            margin: 5px 0;
+            font-size: 18px;
+            font-weight: normal;
+        }
+        h3 {
+            margin: 5px 0;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        .filter-container {
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+            background-color: #283618;
+        }
+        input[type="text"], input[type="date"], button {
+            padding: 5px;
+            font-size: 16px;
+            background-color: #fdf0d5;
+            width: 200px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            margin: 3px;
+            cursor: pointer; /* Make the button look clickable */
+        }
+        /* Styling for the HOME button */
+        button {
+            background-color: #fefae0;
+      
+        }
+        button:hover {
+            background-color: #babd8d;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 10px;
+            display: block;
+        }
+        table {
+            width: 100%;
+            min-width: 1200px;
+            border-collapse: collapse;
+        }
+
+        /* Class for odd rows */
+        .odd-row {
+            background-color: #e9edc9; /* Light gray for odd rows */
+        }
+
+        /* Class for even rows */
+        .even-row {
+            background-color: #fefae0; /* White for even rows */
+        }
+
+        /* Hover effect on table rows */
+        table tr:hover {
+            background-color: #f1f1f1; /* Light green on hover */
+        }
+
+        /* Optional: Change text color on hover */
+        table tr:hover td {
+            color: #155724; /* Dark green text when hovering */
+        }
+
+        /* Add transition effect for smooth hover */
+        table tr {
+            transition: background-color 0.3s ease;
+        }
+
+        /* Styling for table headers */
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        /* Styling for table headers */
+        th {
+            background-color: #283618;
+            color: #fefae0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            text-align: center; /* Align headers to the center */
+        }
+
+        .no-results {
+            color: #d9534f;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        #loading {
+            display: none;
+            font-size: 18px;
+            color: #fefae0;
+        }
+
+        /* Adjust the Date column width to reduce extra space */
+        th:nth-child(3), td:nth-child(3) {
+            min-width: 100px; /* Reduce width */
+            width: 100px;     /* Same width for both header and data cells */
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 20px; }
+            h2 { font-size: 16px; }
+            h3 { font-size: 14px; }
+            th, td { font-size: 14px; }
+            .filter-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            input[type="text"], input[type="date"], button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="koc logo FEFAE0.png" alt="Company Logo">
+        <h1>JOB STATUS<br>SUBSTATIONS & GENERATORS TEAM</h1>
+        <h2>CORPORATE SERVICES GROUP</h2>
+        <h3>ELECTRICAL & INSTRUMENTATION SECTION</h3> 
+        <h4>(UTILITIES TEAM E&I II)</h4>
+    </header>
+
+    <div class="filter-container">
+        <input type="text" id="locationFilter" placeholder="Filter by LOCATION">
+        <input type="date" id="dateFilter">
+        <button id="homeButton">HOME</button> <!-- Added HOME button -->
+    </div>
+
+    <div id="loading">Loading...</div>
+    <div id="no-results" class="no-results" style="display: none;">No data available for the selected filters</div>
+
+    <div class="table-container" id="tableContainer">
+        <table id="data-table"></table>
+    </div>
+
+    <script>
+        // Google Sheets API setup
+        const API_KEY = 'AIzaSyDV9tjKSvDa2WLQzVMFzZbytxRpm3ayl7s'; // Replace with your API Key
+        const SPREADSHEET_ID = '10bVHFOAs2ZuArO8c-WhIlDs_5vlF1w1OAnCEd39A9oA'; // Replace with your Sheet ID
+        const RANGE = 'Sheet1!A5:G'; // Range of data (adjust the sheet name if necessary)
+
+        const locationFilter = document.getElementById('locationFilter');
+        const dateFilter = document.getElementById('dateFilter');
+        const tableContainer = document.getElementById('tableContainer');
+        const loading = document.getElementById('loading');
+        const noResults = document.getElementById('no-results');
+        const dataTable = document.getElementById('data-table');
+        const homeButton = document.getElementById('homeButton'); // Reference to the HOME button
+
+        // Fetch Google Sheets Data
+        async function fetchSheetData() {
+            const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`);
+            const data = await response.json();
+
+            // Check for errors in response
+            if (data.error) {
+                console.error('Error fetching data:', data.error);
+                alert('Error fetching Google Sheets data. Please check the API key and sheet permissions.');
+                return [];
+            }
+
+            return data.values.slice(1); // Remove header row
+        }
+
+        // Function to display data in the table with alternating row colors and reversed order
+        function displayTable(filteredData) {
+            dataTable.innerHTML = ''; // Clear previous table data
+
+            if (filteredData.length === 0) {
+                noResults.style.display = 'block';
+                tableContainer.style.display = 'none';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            tableContainer.style.display = 'block';
+
+            // Create table headers
+            const headers = ['Location', 'Description', 'Date', 'Technician', 'Reference', 'Job Report', 'Remark'];
+            let headerRow = '<tr>';
+            headers.forEach(header => {
+                headerRow += `<th>${header}</th>`;
+            });
+            headerRow += '</tr>';
+            dataTable.innerHTML = headerRow;
+
+            // Reverse the filtered data to display it in reverse order (last row first)
+            filteredData.reverse();
+
+            // Create table rows with alternating background colors
+            filteredData.forEach((item, index) => {
+                const rowClass = index % 2 === 0 ? 'odd-row' : 'even-row'; // Alternating classes for rows
+                let row = `<tr class="${rowClass}">
+                    <td>${item[0]}</td> <!-- Location -->
+                    <td>${item[1]}</td> <!-- Description -->
+                    <td>${item[2]}</td> <!-- Date -->
+                    <td>${item[3]}</td> <!-- Technician -->
+                    <td>${item[4]}</td> <!-- Reference -->
+                    <td>${item[5]}</td> <!-- Job Report -->
+                    <td>${item[6]}</td> <!-- Remark -->
+                </tr>`;
+                dataTable.innerHTML += row;
+            });
+        }
+
+        // Function to filter data based on location and date
+        function filterData(data) {
+            let filteredData = data;
+
+            const locationValue = locationFilter.value.toLowerCase();
+            const dateValue = dateFilter.value;
+
+            // Filter by location
+            if (locationValue) {
+                filteredData = filteredData.filter(item =>
+                    item[0].toLowerCase().includes(locationValue) // Check Location column
+                );
+            }
+
+            // Filter by date
+            if (dateValue) {
+                filteredData = filteredData.filter(item => item[2] === dateValue); // Check Date column
+            }
+
+            displayTable(filteredData);
+        }
+
+        // Event listeners for filter inputs
+        locationFilter.addEventListener('input', () => {
+            filterData(window.sheetData);
+        });
+
+        dateFilter.addEventListener('input', () => {
+            filterData(window.sheetData);
+        });
+
+        // Event listener for HOME button click
+        homeButton.addEventListener('click', () => {
+            window.location.href = 'index.html'; // Navigate to index.html
+        });
+
+        // Initialize data fetching and table rendering
+        async function initializeData() {
+            loading.style.display = 'block'; // Show loading text
+            window.sheetData = await fetchSheetData(); // Fetch data
+            loading.style.display = 'none'; // Hide loading text
+            filterData(window.sheetData); // Display data based on initial filters
+        }
+
+        // Call initializeData when the page loads
+        window.onload = initializeData;
+    </script>
+
+</body>
+</html>

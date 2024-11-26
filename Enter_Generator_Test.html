@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Test Run Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #fefae0;
+        }
+
+        .main-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #283618;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #fefae0;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 150px;
+        }
+
+        .info-labels {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #98fb98;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .info-labels p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            color: #fefae0;
+        }
+
+        input[type="text"], input[type="number"], input[type="date"], input[type="time"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #fdf0d5;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #fefae0;
+            color: black;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:first-child {
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #babd8d;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 10px;
+            }
+
+            .logo {
+                width: 120px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main-container"> <!-- Main container div -->
+
+    <img src="koc logo FEFAE0.png" alt="Company Logo" class="logo">
+    <h1>Generator Test Run Data</h1>
+    <h2>KOC UTILITIES E&I II</h2>
+
+    <div class="info-labels">
+        <!-- Dynamically updated information will go here -->
+        <p id="manufacturer"></p>
+        <p id="kva"></p>
+    </div>
+
+    <form id="generatorForm" action="https://script.google.com/macros/s/AKfycbwSkmbMPaRHP5mkckCSPJmg_zxrLXq6ZDas2FHZKoXcj_7NuyLNCh8JaTEwqLmWi58/exec" method="POST">
+        <label for="location">Location:</label>
+        <select id="location" name="location" required>
+            <option value="" disabled selected>Select a location</option>
+            <option value="SECURITY CENTER">SECURITY CENTER</option>
+            <option value="AHMAD AL JABER EXHIBITION">AHMAD AL JABER EXHIBITION</option>
+            <option value="OFFICE COMPLEX S/S 1">OFFICE COMPLEX S/S 1</option>
+            <option value="OFFICE COMPLEX S/S 3">OFFICE COMPLEX S/S 3</option>
+            <option value="WHITE HOUSE">WHITE HOUSE</option>
+            <option value="GUEST HOUSE">GUEST HOUSE</option>
+            <option value="COMPUTER CENTER GEN-1">COMPUTER CENTER GEN-1</option>
+            <option value="COMPUTER CENTER GEN-2">COMPUTER CENTER GEN-2</option>
+            <option value="KOC MAIN OFFICE">KOC MAIN OFFICE</option>
+            <option value="OFFICE COMPLEX S/S 2 GEN-1">OFFICE COMPLEX S/S 2 GEN-1</option>
+            <option value="OFFICE COMPLEX S/S 2 GEN-2">OFFICE COMPLEX S/S 2 GEN-2</option>
+            <option value="EX-ANGLO AMERICAN SCHOOL">EX-ANGLO AMERICAN SCHOOL</option>
+            <option value="FIRE TEAM (AMIRA COURT B)">FIRE TEAM (AMIRA COURT B)</option>
+            <option value="AL TAMEER YELLOW BUILDING">AL TAMEER YELLOW BUILDING</option>
+            <option value="PORTABLE GENERATOR 1">PORTABLE GENERATOR 1</option>
+            <option value="PORTABLE GENERATOR 2">PORTABLE GENERATOR 2</option>
+            <option value="PORTABLE GENERATOR 3">PORTABLE GENERATOR 3</option>
+            <option value="KOC NEW IT">KOC NEW IT</option>
+            <option value="KOC MEGA COMPLEX GEN-1">KOC MEGA COMPLEX GEN-1</option>
+            <option value="KOC MEGA COMPLEX GEN-2">KOC MEGA COMPLEX GEN-2</option>
+            <option value="PETROL FILLING STATION">PETROL FILLING STATION</option>
+            <option value="RADIO STATION">RADIO STATION</option>
+            <option value="PHQ">PHQ</option>
+            <option value="HANGER 140">HANGER 140</option>
+            <option value="HANGER 150">HANGER 150</option>
+            <option value="CORPORATE SERVICES GROUP BLDG">CORPORATE SERVICES GROUP BLDG</option>
+            <option value="2ND AVENUE NEW OFFICE">2ND AVENUE NEW OFFICE</option>
+        </select>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required>
+
+        <label for="voltage_ll">Voltage L-L:</label>
+        <input type="number" step="0.01" id="voltage_ll" name="voltage_ll" required>
+
+        <label for="voltage_ln">Voltage L-N:</label>
+        <input type="number" step="0.01" id="voltage_ln" name="voltage_ln" required>
+
+        <label for="amps_r">Amps R:</label>
+        <input type="number" step="0.01" id="amps_r" name="amps_r" required>
+
+        <label for="amps_y">Amps Y:</label>
+        <input type="number" step="0.01" id="amps_y" name="amps_y" required>
+
+        <label for="amps_b">Amps B:</label>
+        <input type="number" step="0.01" id="amps_b" name="amps_b" required>
+
+        <label for="battery_volts">Battery Volts:</label>
+        <input type="number" step="0.01" id="battery_volts" name="battery_volts" required>
+
+        <label for="kwh">KWH:</label>
+        <input type="number" step="0.01" id="kwh" name="kwh" required>
+
+        <label for="kw">KW:</label>
+        <input type="number" id="kw" name="kw" required>
+
+        <label for="running_hrs">Running Hrs:</label>
+        <input type="number" step="0.01" id="running_hrs" name="running_hrs" required>
+
+        <label for="pf">Power Factor:</label>
+        <input type="number" step="0.01" id="pf" name="pf" required>
+
+        <label for="frequency">Frequency:</label>
+        <input type="number" step="0.01" id="frequency" name="frequency" required>
+
+        <label for="strings">Strings:</label>
+        <input type="number" id="strings" name="strings" required>
+
+        <label for="rpm">RPM:</label>
+        <input type="number" id="rpm" name="rpm" required>
+
+        <label for="oil_pressure">Oil Pressure:</label>
+        <input type="text" id="oil_pressure" name="oil_pressure" required>
+
+        <label for="water_temp">Water Temperature (°C):</label>
+        <input type="number" id="water_temp" name="water_temp" required>
+
+        <label for="remarks">Remarks:</label>
+        <input type="text" id="remarks" name="remarks">
+
+        <label for="technician">Technician:</label>
+        <input type="text" id="technician" name="technician" required>
+
+	<label for="mode_of_test">Mode of Test:</label>
+	<select id="mode_of_test" name="mode_of_test" required>
+    	<option value="" disabled selected>Select a mode of test</option>
+    	<option value="ACTUAL LOAD">Actual Load</option>
+    	<option value="DUMMY LOAD">Dummy Load</option>
+    	<option value="OFF LOAD">Off Load</option>
+	</select>
+
+	<label for="generator_status">Generator Status:</label>
+	<select id="generator_status" name="generator_status" required>
+    	<option value="" disabled selected>Select generator status</option>
+    	<option value="GOOD CONDITION">GOOD CONDITION</option>
+    	<option value="NOT FUNCTIONING">NOT FUNCTIONING</option>
+        <option value="OPERATIONAL CONDITION WITH WARNING / ERROR STAGE">OPERATIONAL CONDITION WITH WARNING / ERROR STAGE</option>
+	</select>
+
+	<label for="koc_representative">KOC Representative:</label>
+	<select id="koc_representative" name="koc_representative" required>
+    	<option value="" disabled selected>Select a KOC representative</option>
+    	<option value="ENGR. ALI HUMOUD AL AJMI">Engr. Ali Humoud Al Ajmi</option>
+    	<option value="ENGR. NOURAH AL KHADIR">Engr. Nourah Al Khadir</option>
+    	<option value="ENGR. NASER ABOU AMARAH">Engr. Naser Abou Amarah</option>
+    	<option value="SNR F/M. ABDULLAH EAJEMI">Snr F/M. Abdullah Eajemi</option>
+    	<option value="SNR F/M. ABDULRAHMAN AL MUTAIRI">Snr F/M. Abdulrahman Al Mutairi</option>
+    	<option value="F/M. SALAH AL AJMI">F/M. Salah Al Ajmi</option>
+   	<option value="F/M. ALI ABDUL MAJEED">F/M. Ali Abdul Majeed</option>
+        </select>
+
+        <button type="submit">SUBMIT</button>
+        <button type="button" onclick="window.location.href='index.html';">HOME</button>
+    </form>
+
+    <div id="loadingSpinner" style="display:none;">
+        <p>Submitting...</p>
+    </div>
+
+</div> <!-- End of main container div -->
+
+<script>
+    const infoLabels = document.querySelector('.info-labels');
+    const manufacturerText = document.getElementById('manufacturer');
+    const kvaText = document.getElementById('kva');
+    
+    document.getElementById('location').addEventListener('change', function() {
+        const location = this.value;
+        
+        switch (location) {
+            case 'SECURITY CENTER':
+                infoLabels.style.backgroundColor = '#daa520';
+                manufacturerText.textContent = "Manufacturer: CATERPILLAR";
+                kvaText.textContent = "KVA: 2000, Volt: 415, Amps: 2782";
+                break;
+            case 'AHMAD AL JABER EXHIBITION':
+                infoLabels.style.backgroundColor = '#daa520';
+                manufacturerText.textContent = "Manufacturer: CATERPILLAR";
+                kvaText.textContent = "KVA: 350, Volt: 415, Amps: 487";
+                break;
+            case 'OFFICE COMPLEX S/S 1':
+                infoLabels.style.backgroundColor = '#daa520';
+                manufacturerText.textContent = "Manufacturer: CATERPILLAR";
+                kvaText.textContent = "KVA: 810, Volt: 415, Amps: 1127";
+                break;
+           case 'OFFICE COMPLEX S/S 3':
+                infoLabels.style.backgroundColor = '#daa520';
+                manufacturerText.textContent = "Manufacturer: CATERPILLAR";
+                kvaText.textContent = "KVA: 635, Volt: 415, Amps: 883";
+                break;
+            case 'WHITE HOUSE':
+                infoLabels.style.backgroundColor = '#daa520';
+                manufacturerText.textContent = "Manufacturer: CATERPILLAR";
+                kvaText.textContent = "KVA: 365, Volt: 415, Amps: 507.8";
+                break;
+            case 'GUEST HOUSE':
+                infoLabels.style.backgroundColor = '#4169e1';
+                manufacturerText.textContent = "Manufacturer: DALE Power Solutions";
+                kvaText.textContent = "KVA: 800, Volt: 415, Amps: 1113";
+                break;
+            case 'COMPUTER CENTER GEN-1':
+                infoLabels.style.backgroundColor = '#a9a9a9';
+                manufacturerText.textContent = "Manufacturer: MUNARTECH";
+                kvaText.textContent = "KVA: 1000, Volt: 415, Amps: 1391";
+                break;
+            case 'COMPUTER CENTER GEN-2':
+                infoLabels.style.backgroundColor = '#daa520';
+                manufacturerText.textContent = "Manufacturer: CATERPILLAR";
+                kvaText.textContent = "KVA: 1360, Volt: 415, Amps: 1640";
+                break;
+            case 'KOC MAIN OFFICE':
+                infoLabels.style.backgroundColor = '#daa520';
+                manufacturerText.textContent = "Manufacturer: CATERPILLAR";
+                kvaText.textContent = "KVA: 1250, Volt: 415, Amps: 1478";
+                break;
+            case 'OFFICE COMPLEX S/S 2 GEN-1':
+                infoLabels.style.backgroundColor = '#daa520';
+                manufacturerText.textContent = "Manufacturer: CATERPILLAR";
+                kvaText.textContent = "KVA: 810, Volt: 415, Amps: 1127";
+                break;
+            case 'OFFICE COMPLEX S/S 2 GEN-2':
+                infoLabels.style.backgroundColor = '#daa520';
+                manufacturerText.textContent = "Manufacturer: CATERPILLAR";
+                kvaText.textContent = "KVA: 1600, Volt: 415, Amps: 2226";
+                break;
+            case 'EX-ANGLO AMERICAN SCHOOL':
+                infoLabels.style.backgroundColor = '#fafad2';
+                manufacturerText.textContent = "Manufacturer: KOHLER";
+                kvaText.textContent = "KVA: 165, Volt: 440, Amps: 226";
+                break;
+            case 'FIRE TEAM (AMIRA COURT B)':
+                infoLabels.style.backgroundColor = '#ff0000';
+                manufacturerText.textContent = "Manufacturer: MARAPCO";
+                kvaText.textContent = "KVA: 65, Volt: 415, Amps: 99";
+                break;
+            case 'AL TAMEER YELLOW BUILDING':
+                infoLabels.style.backgroundColor = '#ff0000';
+                manufacturerText.textContent = "Manufacturer: MARAPCO";
+                kvaText.textContent = "KVA: 1100, Volt: 415, Amps: 1530";
+                break;
+            case 'PORTABLE GENERATOR 1':
+                infoLabels.style.backgroundColor = '#fafad2';
+                manufacturerText.textContent = "Manufacturer: KIRLOSKAR";
+                kvaText.textContent = "KVA: 82, Volt: 415, Amps: 114";
+                break;
+            case 'PORTABLE GENERATOR 2':
+                infoLabels.style.backgroundColor = '#fafad2';
+                manufacturerText.textContent = "Manufacturer: KIRLOSKAR";
+                kvaText.textContent = "KVA: 30, Volt: 415, Amps: 41";
+                break;
+            case 'PORTABLE GENERATOR 3':
+                infoLabels.style.backgroundColor = '#fafad2';
+                manufacturerText.textContent = "Manufacturer: KIRLOSKAR";
+                kvaText.textContent = "KVA: 30, Volt: 415, Amps: 41";
+                break;
+            case 'KOC NEW IT':
+                infoLabels.style.backgroundColor = '#2e8b57';
+                manufacturerText.textContent = "Manufacturer: CUMMINS";
+                kvaText.textContent = "KVA: 1041, Volt: 415, Amps: 1445";
+                break;
+            case 'KOC MEGA COMPLEX GEN-1':
+                infoLabels.style.backgroundColor = '#2e8b57';
+                manufacturerText.textContent = "Manufacturer: CUMMINS";
+                kvaText.textContent = "KVA: 900, Volt: 415, Amps: 1249";
+                break;
+            case 'KOC MEGA COMPLEX GEN-2':
+                infoLabels.style.backgroundColor = '#2e8b57';
+                manufacturerText.textContent = "Manufacturer: CUMMINS";
+                kvaText.textContent = "KVA: 900, Volt: 415, Amps: 1249";
+                break;
+            case 'PETROL FILLING STATION':
+                infoLabels.style.backgroundColor = '#fafad2';
+                manufacturerText.textContent = "Manufacturer: PERKINS";
+                kvaText.textContent = "KVA: 200, Volt: 415, Amps: 250";
+                break;
+            case 'RADIO STATION':
+                infoLabels.style.backgroundColor = '#2e8b57';
+                manufacturerText.textContent = "Manufacturer: CUMMINS";
+                kvaText.textContent = "KVA: 1120, Volt: 415, Amps: 1813";
+                break;
+            case 'PHQ':
+                infoLabels.style.backgroundColor = '#2e8b57';
+                manufacturerText.textContent = "Manufacturer: CUMMINS";
+                kvaText.textContent = "KVA: 275, Volt: 415, Amps: 382";
+                break;
+            case 'HANGER 140':
+                infoLabels.style.backgroundColor = '#fafad2';
+                manufacturerText.textContent = "Manufacturer: PERKINS";
+                kvaText.textContent = "KVA: 165, Volt: 400, Amps: 238";
+                break;
+            case 'HANGER 150':
+                infoLabels.style.backgroundColor = '#fafad2';
+                manufacturerText.textContent = "Manufacturer: PERKINS";
+                kvaText.textContent = "KVA: 220, Volt: 400, Amps: 317";
+                break;
+	    case 'CORPORATE SERVICES GROUP BLDG':
+                infoLabels.style.backgroundColor = '#2e8b57';
+                manufacturerText.textContent = "Manufacturer: CUMMINS";
+                kvaText.textContent = "KVA: 706, Volt: 416, Amps: 980";
+                break;
+	    case '2ND AVENUE NEW OFFICE':
+                infoLabels.style.backgroundColor = '#fafad2';
+                manufacturerText.textContent = "Manufacturer: MTU";
+                kvaText.textContent = "KVA: 800, Volt: 440, Amps: 1050";
+                break;
+            // Add the rest of the cases here (you already have this part)
+            default:
+                infoLabels.style.backgroundColor = '#98fb98'; // Default background color
+                manufacturerText.textContent = "";
+                kvaText.textContent = "";
+        }
+    });
+
+
+    // Handle form submission
+    const form = document.getElementById('generatorForm');
+    form.onsubmit = function(event) {
+        event.preventDefault();
+        document.getElementById('loadingSpinner').style.display = 'block'; // Show spinner
+
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            document.getElementById('loadingSpinner').style.display = 'none'; // Hide spinner
+            if (response.ok) {
+                alert('Form submitted successfully!');
+                form.reset();
+            } else {
+                alert('There was an error submitting the form. Please try again.');
+            }
+        })
+        .catch(error => {
+            document.getElementById('loadingSpinner').style.display = 'none'; // Hide spinner
+            console.error('Error:', error);
+            alert('There was an error submitting the form. Please try again.');
+        });
+    };
+</script>
+
+</body>
+</html>
