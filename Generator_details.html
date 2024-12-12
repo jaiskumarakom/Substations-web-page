@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GENERATORS DETAILS</title>
+  <style>
+    /* Set a gradient background from left-bottom corner to right-top corner */
+    body {
+      background: linear-gradient(to top right, #3f1e5a, #1c2f5d); /* Gradient colors */
+      color: #fefae0; /* Text color */
+      font-family: Arial, sans-serif; /* Add a clean font */
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: left;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+button {
+    width: 100px;
+    padding: 10px;
+    background-color: #fefae0;
+    color: black;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+       margin-bottom: 10px;
+    float: right; /* Add this line */
+}
+        button:first-child {
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #babd8d;
+        }
+
+
+    /* Container to center content */
+    .container {
+  background: linear-gradient(to top right, #1c2f5d, #3f1e5a); /* Gradient colors */
+  padding: 20px;
+  box-sizing: border-box; /* Ensures padding is included in width calculation */
+  width: 100%; /* Make container width 100% of the page */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    /* Styling the table header and table content */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    td:nth-child(2) {
+    max-width: 150px;        /* Restrict width to 100px */
+    word-wrap: break-word;   /* Ensure text wraps if it exceeds the width */
+    white-space: normal;     /* Allow text to wrap normally */
+    overflow: hidden;        /* Hide overflow text */
+    text-align: center;
+    }
+
+    th {
+    background-color: #f2f2f2;
+    color: black; /* Change header text color to black */
+    text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    select {
+      color: black; /* Change dropdown text color to black */
+border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    }
+
+    .running-parameters {
+    font-style: italic;
+    padding: 5px;
+    text-align: center;
+    }
+
+    /* Image styling */
+    .img-container {
+      width: 600px; /* Adjust size */
+      height: 500px; /* Adjust size */
+      object-fit: cover; /* Ensure the image fits properly */
+    }
+	td img {
+    display: block; /* Ensures the image is treated as a block-level element */
+    margin-left: auto; /* Centers the image horizontally */
+    margin-right: auto; /* Centers the image horizontally */
+  }
+
+  
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>GENERATORS DETAILS</h1>
+    
+    <!-- Dropdown to select location -->
+    <label for="location-select">Select Location:</label>
+    <select id="location-select">
+      <option value="">--Select a Location--</option>
+      <option value="OFFICE COMPLEX S/S 1">OFFICE COMPLEX S/S 1</option>
+      <option value="OFFICE COMPLEX S/S 2 GEN-1">OFFICE COMPLEX S/S 2 GEN-1</option>
+      <option value="OFFICE COMPLEX S/S 2 GEN-2">OFFICE COMPLEX S/S 2 GEN-2</option>
+      <option value="OFFICE COMPLEX S/S 3">OFFICE COMPLEX S/S 3</option>
+      <option value="COMPUTER CENTER GEN-1">COMPUTER CENTER GEN-1</option>
+      <option value="COMPUTER CENTER GEN-2">COMPUTER CENTER GEN-2</option>
+      <option value="SECURITY CENTER">SECURITY CENTER</option>
+      <option value="AHMAD AL JABER EXHIBITION">AHMAD AL JABER EXHIBITION</option>
+      <option value="KOC MAIN OFFICE">KOC MAIN OFFICE</option>
+      <option value="KOC MEGA COMPLEX GEN-1">KOC MEGA COMPLEX GEN-1</option>
+      <option value="KOC MEGA COMPLEX GEN-2">KOC MEGA COMPLEX GEN-2</option>
+      <option value="AL TAMEER YELLOW BUILDING">AL TAMEER YELLOW BUILDING</option>
+      <option value="RADIO STATION">RADIO STATION</option>
+      <option value="PHQ">PHQ</option>
+      <option value="HANGER 140">HANGER 140</option>
+      <option value="HANGER 150">HANGER 150</option>
+      <option value="PORTABLE GENERATOR 1">PORTABLE GENERATOR 1</option>
+      <option value="PORTABLE GENERATOR 2">PORTABLE GENERATOR 2</option>
+      <option value="PORTABLE GENERATOR 3">PORTABLE GENERATOR 3</option>
+      <option value="PETROL FILLING STATION">PETROL FILLING STATION</option>
+      <option value="EX-ANGLO AMERICAN SCHOOL">EX-ANGLO AMERICAN SCHOOL</option>
+      <option value="FIRE TEAM (AMIRA COURT B)">FIRE TEAM (AMIRA COURT B)</option>
+      <option value="KOC NEW IT">KOC NEW IT</option>
+      <option value="2ND AVENUE NEW OFFICE">2ND AVENUE NEW OFFICE</option>
+      <option value="WHITE HOUSE">WHITE HOUSE</option>
+      <option value="GUEST HOUSE">GUEST HOUSE</option>
+    </select>
+
+    <button type="button" onclick="window.location.href='index.html';">← HOME</button>
+    <br><br>
+
+    <!-- Table to display labels -->
+    <table>
+      <tr>
+        <th>Label</th>
+        <th>Data</th>
+        <th>Generator</th>
+        <th>Parameters</th> <!-- New column header -->
+      </tr>
+      <tr>
+        <td><label for="label_make">Make: </label></td>
+        <td><span id="label_make" class="data-label"></span></td>
+        <td rowspan="12" class="data-label">
+          <img src="CAT1.png" alt="Running Parameters Image" class="img-container">
+        </td> <!-- Merged column with image -->
+        <td rowspan="12" class="data-label">
+          <!-- Parameters placeholder -->
+          <span id="label_parameters" class="running-parameters"></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TEST RUN
+		  <table>
+            
+            <tr>
+              <td><label for="label_ll">Voltage L-L: </label></td>
+              <td><span id="label_ll" class="data-label"></span></td>  
+            <td rowspan="2">
+			<span id="param_3" class="data-label">
+			<img src="rpm0.gif" alt="Parameter 3 GIF" style="width: 150px; height: 150px;">
+			</span></td>
+            </tr>
+            <tr>
+              <td><label for="label_ln">Voltage L-N: </label></td>
+              <td><span id="label_ln" class="data-label"></span></td>DATA
+            </tr>
+            <tr>
+			  <td><label for="label_ampsl1">Amps L1: </label></td>
+              <td><span id="label_ampsl1" class="data-label"></span></td>  
+            <td rowspan="3">
+              <span id="param_4" class="data-label">
+              <img src="oilpressure0.gif" alt="Parameter 4 GIF" style="width: 150px; height: 150px;">
+              </span></td>
+            </tr>
+            <tr>
+              <td><label for="label_ampsl2">Amps L2: </label></td>
+              <td><span id="label_ampsl2" class="data-label"></span></td>
+            </tr>
+            <tr>
+              <td><label for="label_ampsl3">Amps L3: </label></td>
+              <td><span id="label_ampsl3" class="data-label"></span></td>
+            </tr>
+			<tr>
+              <td><label for="label_hz">Frequency: </label></td>
+              <td><span id="label_hz" class="data-label"></span></td>
+            <td rowspan="2">
+              <span id="param_5" class="data-label">
+              <img src="temperature0.gif" alt="Parameter 5 GIF" style="width: 150px; height: 150px;">
+              </span></td>
+            </tr>
+			<tr>
+			  <td><label for="label_pf2">PF: </label></td>
+              <td><span id="label_pf2" class="data-label"></span></td>
+		    </tr>
+          </table>
+        </td> <!-- New Parameters column -->
+      </tr>
+      <tr>
+        <td><label for="label_model">Model: </label></td>
+        <td><span id="label_model" class="data-label"></span></td>
+      </tr>
+      <tr>
+        <td><label for="label_kva">KVA: </label></td>
+        <td><span id="label_kva" class="data-label"></span></td>
+      </tr>
+      <tr>
+        <td><label for="label_kw">KW: </label></td>
+        <td><span id="label_kw" class="data-label"></span></td>
+      </tr>
+      <tr>
+        <td><label for="label_volt">Voltage: </label></td>
+        <td><span id="label_volt" class="data-label"></span></td>
+      </tr>
+      <tr>
+        <td><label for="label_amps">Amps: </label></td>
+        <td><span id="label_amps" class="data-label"></span></td>
+      </tr>
+      <tr>
+        <td><label for="label_rpm">RPM: </label></td>
+        <td><span id="label_rpm" class="data-label"></span></td>
+      </tr>
+      <tr>
+        <td><label for="label_pf">Power Factor (PF): </label></td>
+        <td><span id="label_pf" class="data-label"></span></td>
+      </tr>
+      <tr>
+        <td><label for="label_frequency">Frequency: </label></td>
+        <td><span id="label_frequency" class="data-label"></span></td>
+      </tr>
+      <tr>
+        <td><label for="label_srnumber">Serial Number: </label></td>
+        <td><span id="label_srnumber" class="data-label"></span></td>
+      </tr>
+      <tr>
+        <td><label for="label_battery">Battery: </label></td>
+        <td><span id="label_battery" class="data-label"></span></td>
+      </tr>
+      <tr>
+        <td><label for="label_batterydate">Battery Date: </label></td>
+        <td><span id="label_batterydate" class="data-label"></span></td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    const API_KEY = 'AIzaSyBjaHX9NlFK6Cwn7K6vQb98nPmAhxe7_vA'; // Replace with your API key
+    const SHEET_ID = '1slTygx20S27QCz3Mr8oaB9WDlImYZxvX3vHcHmf0BYM'; // Replace with your Google Sheet ID
+    const RANGE = 'Sheet1'; // Sheet name or range in the sheet
+
+    // Construct the API URL
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+
+    // Function to change the image based on the selected location
+    function changeImage(location) {
+      const imageMap = {
+        "": "CAT1.png", // Default image
+        "OFFICE COMPLEX S/S 1": "CAT1.png",
+        "OFFICE COMPLEX S/S 2 GEN-1": "CAT1.png",
+        "OFFICE COMPLEX S/S 2 GEN-2": "CAT_big.png",
+        "OFFICE COMPLEX S/S 3": "substation3.png",
+        "COMPUTER CENTER GEN-1": "computercenter1.png",
+        "COMPUTER CENTER GEN-2": "2000kva.png",
+        "SECURITY CENTER": "2000kva.png",
+        "AHMAD AL JABER EXHIBITION": "CAT1.png",
+        "KOC MAIN OFFICE": "CAT_big.png",
+        "KOC MEGA COMPLEX GEN-1": "Cummins.png",
+        "KOC MEGA COMPLEX GEN-2": "Cummins.png",
+        "AL TAMEER YELLOW BUILDING": "yellow.png",
+        "RADIO STATION": "radio.png",
+        "PHQ": "PHQ.png",
+        "HANGER 140": "140.png",
+        "HANGER 150": "140.png",
+        "PORTABLE GENERATOR 1": "kirloskar.png",
+        "PORTABLE GENERATOR 2": "kirloskar.png",
+        "PORTABLE GENERATOR 3": "kirloskar.png",
+        "PETROL FILLING STATION": "petrol.png",
+        "EX-ANGLO AMERICAN SCHOOL": "anglo.png",
+        "FIRE TEAM (AMIRA COURT B)": "anglo.png",
+        "KOC NEW IT": "Cummins.png",
+        "2ND AVENUE NEW OFFICE": "mtu.png",
+        "WHITE HOUSE": "white.png",
+        "GUEST HOUSE": "dale.png"
+      };
+	const paramImages = {
+    "OFFICE COMPLEX S/S 1": { param_3: "RPM.gif", param_4: "80.gif", param_5: "400.gif" },
+    "OFFICE COMPLEX S/S 2 GEN-1": { param_3: "RPM.gif", param_4: "80.gif", param_5: "400.gif" },
+    "OFFICE COMPLEX S/S 2 GEN-2": { param_3: "RPM.gif", param_4: "80.gif", param_5: "400.gif" },
+    "OFFICE COMPLEX S/S 3": { param_3: "RPM.gif", param_4: "85.gif", param_5: "370.gif" },
+    "COMPUTER CENTER GEN-1": { param_3: "RPM.gif", param_4: "70.gif", param_5: "70 psi.gif" },
+    "COMPUTER CENTER GEN-2": { param_3: "RPM.gif", param_4: "80.gif", param_5: "400.gif" },
+    "SECURITY CENTER": { param_3: "RPM.gif", param_4: "80.gif", param_5: "400.gif" },
+    "AHMAD AL JABER EXHIBITION": { param_3: "RPM.gif", param_4: "80.gif", param_5: "400.gif" },
+    "KOC MAIN OFFICE": { param_3: "RPM.gif", param_4: "80.gif", param_5: "450.gif" },
+    "KOC MEGA COMPLEX GEN-1": { param_3: "RPM.gif", param_4: "75.gif", param_5: "470.gif" },
+    "KOC MEGA COMPLEX GEN-2": { param_3: "RPM.gif", param_4: "75.gif", param_5: "470.gif" },
+    "AL TAMEER YELLOW BUILDING": { param_3: "RPM.gif", param_4: "NA.gif", param_5: "oilNA.gif" },
+    "RADIO STATION": { param_3: "RPM.gif", param_4: "80.gif", param_5: "70 psi.gif" },
+    "PHQ": { param_3: "RPM.gif", param_4: "NA.gif", param_5: "oilNA.gif" },
+    "HANGER 140": { param_3: "RPM.gif", param_4: "75.gif", param_5: "450.gif" },
+    "HANGER 150": { param_3: "RPM.gif", param_4: "75.gif", param_5: "450.gif" },
+    "PORTABLE GENERATOR 1": { param_3: "RPM.gif", param_4: "80.gif", param_5: "570.gif" },
+    "PORTABLE GENERATOR 2": { param_3: "RPM.gif", param_4: "80.gif", param_5: "570.gif" },
+    "PORTABLE GENERATOR 3": { param_3: "RPM.gif", param_4: "80.gif", param_5: "570.gif" },
+    "PETROL FILLING STATION": { param_3: "RPM.gif", param_4: "75.gif", param_5: "450.gif" },
+    "EX-ANGLO AMERICAN SCHOOL": { param_3: "RPM.gif", param_4: "80.gif", param_5: "60 psi.gif" },
+    "FIRE TEAM (AMIRA COURT B)": { param_3: "RPM.gif", param_4: "70.gif", param_5: "400.gif" },
+    "KOC NEW IT": { param_3: "RPM.gif", param_4: "80.gif", param_5: "400.gif" },
+    "2ND AVENUE NEW OFFICE": { param_3: "RPM.gif", param_4: "80.gif", param_5: "400.gif" },
+    "WHITE HOUSE": { param_3: "RPM.gif", param_4: "70.gif", param_5: "400.gif" },
+    "GUEST HOUSE": { param_3: "RPM.gif", param_4: "75.gif", param_5: "470.gif" },
+  };
+
+  const imgParam3 = document.querySelector('#param_3 img');
+  const imgParam4 = document.querySelector('#param_4 img');
+  const imgParam5 = document.querySelector('#param_5 img');
+  
+  if (paramImages[location]) {
+    imgParam3.src = paramImages[location].param_3;
+    imgParam4.src = paramImages[location].param_4;
+    imgParam5.src = paramImages[location].param_5;
+  } else {
+    imgParam3.src = "rpm0.gif"; // Default image
+    imgParam4.src = "oilpressure0.gif"; // Default image
+    imgParam5.src = "temperature0.gif"; // Default image
+  }
+      const imgElement = document.querySelector('.img-container');
+      imgElement.src = imageMap[location] || imageMap[""]; // Default image if not found
+    }
+
+    // Function to fetch and display the data
+    function fetchData(location) {
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const rows = data.values;
+          const selectedRow = rows.find(row => row[0] === location);
+
+          if (selectedRow) {
+            // Update the labels with data
+            document.getElementById('label_make').textContent = selectedRow[1] || 'N/A';
+            document.getElementById('label_kva').textContent = selectedRow[2] || 'N/A';
+            document.getElementById('label_kw').textContent = selectedRow[3] || 'N/A';
+            document.getElementById('label_volt').textContent = selectedRow[4] || 'N/A';
+            document.getElementById('label_amps').textContent = selectedRow[5] || 'N/A';
+            document.getElementById('label_rpm').textContent = selectedRow[6] || 'N/A';
+            document.getElementById('label_pf').textContent = selectedRow[7] || 'N/A';
+            document.getElementById('label_frequency').textContent = selectedRow[8] || 'N/A';
+            document.getElementById('label_srnumber').textContent = selectedRow[9] || 'N/A';
+            document.getElementById('label_battery').textContent = selectedRow[10] || 'N/A';
+            document.getElementById('label_batterydate').textContent = selectedRow[11] || 'N/A';
+            document.getElementById('label_model').textContent = selectedRow[12] || 'N/A';
+			document.getElementById('label_ll').textContent = selectedRow[13] || 'N/A';
+			document.getElementById('label_ln').textContent = selectedRow[14] || 'N/A';
+			document.getElementById('label_ampsl1').textContent = selectedRow[15] || 'N/A';
+			document.getElementById('label_ampsl2').textContent = selectedRow[16] || 'N/A';
+			document.getElementById('label_ampsl3').textContent = selectedRow[17] || 'N/A';
+			document.getElementById('label_hz').textContent = selectedRow[18] || 'N/A';
+			document.getElementById('label_pf2').textContent = selectedRow[19] || 'N/A';
+            // Change the image based on location
+            changeImage(location);
+          } 
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          alert('Failed to fetch data from Google Sheets.');
+        });
+    }
+
+    // Event listener for location dropdown
+    document.getElementById('location-select').addEventListener('change', function () {
+      const location = this.value;
+      fetchData(location);
+      changeImage(location); // Update image when location changes
+    });
+  </script>
+</body>
+</html>
