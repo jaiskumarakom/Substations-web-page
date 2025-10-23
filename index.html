@@ -20,14 +20,13 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
         }
 
         /* Container Styling */
         .container {
             text-align: center;
             padding: 20px;
-            background: linear-gradient(to top right, #1c2f5d, #3f1e5a); /* Gradient colors */
+            background: linear-gradient(to top right, #1c2f5d, #3f1e5a);
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             width: 90%;
@@ -36,12 +35,12 @@
 
         /* Logo */
         .logo img {
-            width: 100px;  /* Adjust the size as needed */
+            width: 100px;
             height: auto;
             margin-bottom: 10px;
         }
 
-        /* Heading Styles */
+        /* Headings */
         h1, h2, h3, h4 {
             margin: 10px 0;
         }
@@ -66,18 +65,40 @@
             color: #fefae0;
         }
 
-        /* Button Styles */
+        /* Login Area */
+        .login-area {
+            margin-top: 20px;
+            text-align: left;
+            color: #fefae0;
+        }
+
+        .login-area label {
+            display: block;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .login-area input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        /* Buttons */
         .button-container {
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .button-container a {
-            text-decoration: none; /* Remove underline */
+            text-decoration: none;
         }
 
         button {
-            background-color: #fefae0; /* Updated button color to light green */
-            color: black; /* Change text color to ensure contrast */
+            background-color: #fefae0;
+            color: black;
             border: none;
             border-radius: 5px;
             padding: 12px 20px;
@@ -89,7 +110,16 @@
         }
 
         button:hover {
-            background-color: #babd8d; /* Darker green for hover effect */
+            background-color: #babd8d;
+        }
+
+        /* Error Message */
+        .error-message {
+            color: #ffcccb;
+            font-size: 0.9em;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
         }
     </style>
 </head>
@@ -104,26 +134,36 @@
         <h1>SUBSTATIONS<br>&<br> GENERATORS TEAM</h1>
         <h2>CORPORATE SERVICES GROUP</h2>
         <h3>Electrical & Instrumentation Section</h3>
-        <h4>(UTILITIES E & I II)</h4>
+        <h4>(UTILITIES E & I I)</h4>
+
+        <!-- Login Area -->
+        <div class="login-area">
+            <label for="username">User Name:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+
+            <button type="button" onclick="validateLogin()">LOGIN</button>
+            <div class="error-message" id="errorMessage">Incorrect user name or password.</div>
+        </div>
 
         <!-- Buttons with Links -->
-        <div class="button-container">
-            <a href="Enter_Generator_Test.html">
-                <button>ENTER GENERATOR TEST RUN DATA</button>
-            </a>
-            <a href="Enter_Job_Reports.html">
-                <button>ENTER DAILY JOB REPORTS</button>
-            </a>
-            <a href="View_Generator_Test_Data.html">
-                <button>VIEW GENERATOR TEST RUN DATA</button>
-            </a>
-            <a href="View_Job_Reports.html">
-                <button>VIEW DAILY JOB REPORTS</button>
-            </a>
-            <a href="Generator_details.html">
-                <button>VIEW GENERATORS DETAILS</button>
-            </a>
-        </div>
+        
     </div>
+
+    <script>
+        function validateLogin() {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const errorMessage = document.getElementById("errorMessage");
+
+            if (username === "csg" && password === "utilities1") {
+                window.location.href = "main.html";
+            } else {
+                errorMessage.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
