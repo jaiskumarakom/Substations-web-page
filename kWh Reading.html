@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kWh Reading</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #fefae0;
+        }
+
+        .main-container {
+            text-align: center;
+			max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(to top right, #1c2f5d, #3f1e5a); /* Gradient colors */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        }
+
+        /* Heading Styles */
+        h1, h2, h3, h4 {
+            margin: 10px 0;
+        }
+
+        h1 {
+            font-size: 1.6em;
+            color: #fefae0;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            color: #fefae0;
+        }
+
+        h3 {
+            font-size: 1em;
+            color: #fefae0;
+        }
+
+        h4 {
+            font-size: 0.8em;
+            color: #fefae0;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 150px;
+        }
+
+        .info-labels {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #98fb98;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .info-labels p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    color: #fefae0;
+    text-align: left;   /* ✅ Add this line */
+}
+
+        input[type="text"], 
+		input[type="number"], 
+		input[type="date"], 
+		input[type="time"], 
+		input[type="month"],
+		select {
+		width: 100%;
+		padding: 10px;
+		margin-top: 5px;
+		margin-bottom: 20px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		box-sizing: border-box;
+		background-color: #fdf0d5;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #fefae0;
+            color: black;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:first-child {
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #babd8d;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 10px;
+            }
+
+            .logo {
+                width: 120px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main-container"> <!-- Main container div -->
+
+    <img src="koc logo FEFAE0.png" alt="Company Logo" class="logo">
+     <!-- Header Titles -->
+        <h1>kWh READINGS</h1>
+        <h2>CORPORATE SERVICES GROUP</h2>
+        <h3>Electrical & Instrumentation Section</h3>
+        <h4>(UTILITIES E & I I)</h4>
+   
+
+    <form id="kwhForm" action="" method="POST">
+        <label for="location">Location:</label>
+        <select id="location" name="location" required>
+            <option value="" disabled selected>Select a location</option>
+            
+            <option value="COMPLEX S/S 1_MLTB-SS1.1_INC1">COMPLEX S/S 1_MLTB-SS1.1_INC1</option>
+<option value="COMPLEX S/S 1_MLTB-SS1.1_INC2">COMPLEX S/S 1_MLTB-SS1.1_INC2</option>
+<option value="COMPLEX S/S 1_MLTB-SS1.2_INC1">COMPLEX S/S 1_MLTB-SS1.2_INC1</option>
+<option value="COMPLEX S/S 1_MLTB-SS1.2_INC2">COMPLEX S/S 1_MLTB-SS1.2_INC2</option>
+<option value="COMPLEX S/S 2_MLTB-SS.2.1_INC1">COMPLEX S/S 2_MLTB-SS.2.1_INC1</option>
+<option value="COMPLEX S/S 2_MLTB-SS.2.1_INC2">COMPLEX S/S 2_MLTB-SS.2.1_INC2</option>
+<option value="COMPLEX S/S 2_MLTB-SS.2.2_INC1">COMPLEX S/S 2_MLTB-SS.2.2_INC1</option>
+<option value="COMPLEX S/S 2_MLTB-SS.2.3_INC1">COMPLEX S/S 2_MLTB-SS.2.3_INC1</option>
+<option value="COMPLEX S/S 2_MLTB-SS.2.4_INC1">COMPLEX S/S 2_MLTB-SS.2.4_INC1</option>
+<option value="COMPLEX S/S 3_MLTB-SS.3.1_INC1">COMPLEX S/S 3_MLTB-SS.3.1_INC1</option>
+<option value="COMPLEX S/S 3_MLTB-SS.3.2_INC1">COMPLEX S/S 3_MLTB-SS.3.2_INC1</option>
+<option value="COMPLEX S/S 3_MLTB-SS.3.2_INC2">COMPLEX S/S 3_MLTB-SS.3.2_INC2</option>
+<option value="COMPUTER CENTER MSB & MAINTBOARD_INC1">COMPUTER CENTER MSB & MAINTBOARD_INC1</option>
+<option value="COMPUTER CENTER MSB & MAINTBOARD_INC2">COMPUTER CENTER MSB & MAINTBOARD_INC2</option>
+<option value="CSG_MLTP S/S_INC1">CSG_MLTP S/S_INC1</option>
+<option value="CSG_MLTP S/S_INC2">CSG_MLTP S/S_INC2</option>
+<option value="KGOC LT PANEL 1 INC 1">KGOC LT PANEL 1 INC 1</option>
+<option value="KGOC LT PANEL 1 INC 2">KGOC LT PANEL 1 INC 2</option>
+<option value="KGOC LT PANEL 2 INC 1">KGOC LT PANEL 2 INC 1</option>
+<option value="KOC 160 VILLA S/S MLTP-S1_INC1">KOC 160 VILLA S/S MLTP-S1_INC1</option>
+<option value="KOC 160 VILLA S/S MLTP-S1_INC2">KOC 160 VILLA S/S MLTP-S1_INC2</option>
+<option value="KOC 160 VILLA S/S MLTP-S2_INC1">KOC 160 VILLA S/S MLTP-S2_INC1</option>
+<option value="KOC 160 VILLA S/S MLTP-S2_INC2">KOC 160 VILLA S/S MLTP-S2_INC2</option>
+<option value="KOC 160 VILLA S/S MLTP-S3_INC1">KOC 160 VILLA S/S MLTP-S3_INC1</option>
+<option value="KOC 160 VILLA S/S MLTP-S3_INC2">KOC 160 VILLA S/S MLTP-S3_INC2</option>
+<option value="KPC NEW MLTB">KPC NEW MLTB</option>
+<option value="KPC OLD MLTB">KPC OLD MLTB</option>
+<option value="MEGA COMPLEX MLTB(10-SWBD)-002_INC1">MEGA COMPLEX MLTB(10-SWBD)-002_INC1</option>
+<option value="MEGA COMPLEX MLTB(10-SWBD)-002_INC2">MEGA COMPLEX MLTB(10-SWBD)-002_INC2</option>
+<option value="MEGA COMPLEX MLTB(10-SWBD)-003_INC1">MEGA COMPLEX MLTB(10-SWBD)-003_INC1</option>
+<option value="MEGA COMPLEX MLTB(10-SWBD)-003_INC2">MEGA COMPLEX MLTB(10-SWBD)-003_INC2</option>
+<option value="MEGA COMPLEX MLTB(10-SWBD)-004_INC1">MEGA COMPLEX MLTB(10-SWBD)-004_INC1</option>
+<option value="MEGA COMPLEX MLTB(10-SWBD)-004_INC2">MEGA COMPLEX MLTB(10-SWBD)-004_INC2</option>
+<option value="MEGA COMPLEX MLTB(10-SWBD)-006_INC1">MEGA COMPLEX MLTB(10-SWBD)-006_INC1</option>
+<option value="MEGA COMPLEX MLTB(10-SWBD)-006_INC2">MEGA COMPLEX MLTB(10-SWBD)-006_INC2</option>
+<option value="MOI 440V SWITCHBOARD">MOI 440V SWITCHBOARD</option>
+<option value="NEW IT 1824-MLTP-01_INC1">NEW IT 1824-MLTP-01_INC1</option>
+<option value="NEW IT 1824-MLTP-01_INC2">NEW IT 1824-MLTP-01_INC2</option>
+<option value="NEW IT 1824-MLTP-02_INC1">NEW IT 1824-MLTP-02_INC1</option>
+<option value="NEW IT 1824-MLTP-02_INC2">NEW IT 1824-MLTP-02_INC2</option>
+<option value="SECURITY CENTER SWBD(E999-SGU001)_INC1">SECURITY CENTER SWBD(E999-SGU001)_INC1</option>
+<option value="SECURITY CENTER SWBD(E999-SGU001)_INC2">SECURITY CENTER SWBD(E999-SGU001)_INC2</option>
+            
+        </select>
+
+        
+
+        <label for="month_year">Month / Year:</label>
+        <input type="month" id="month_year" name="month_year" required>
+
+        <label for="initial_reading">Initial Reading:</label>
+        <input type="number" step="1" id="initial_reading" name="initial_reading" required>
+
+        <label for="final_reading">Final Reading:</label>
+        <input type="number" step="1" id="final_reading" name="final_reading" required>
+
+        <label for="voltage">Voltage:</label>
+        <input type="number" step="1" id="voltage" name="voltage" required>
+		
+		<label for="current">Highest Current:</label>
+        <input type="number" step="1" id="current" name="current" required>
+		
+		<label for="total_units">Total Units:</label>
+        <input type="number" id="total_units" name="total_units" readonly>
+
+
+        <button type="submit">SUBMIT</button>
+        <button type="button" onclick="window.location.href='main.html';">HOME</button>
+    </form>
+
+    <div id="loadingSpinner" style="display:none;">
+        <p>Submitting...</p>
+    </div>
+
+</div> <!-- End of main container div -->
+
+<script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyRKYGnOfbVovVWY9-T197y_Kb8PWFP-TwVhL7TUrfE85gCnhjpBscnBwvh6AEqFxs1/exec';
+
+const form = document.getElementById('kwhForm');
+const initialInput = document.getElementById("initial_reading");
+const finalInput = document.getElementById("final_reading");
+const totalUnitsInput = document.getElementById("total_units");
+const loadingSpinner = document.getElementById("loadingSpinner");
+
+// ✅ Auto Calculate Total Units
+function calculateTotalUnits() {
+    const initial = parseFloat(initialInput.value) || 0;
+    const final = parseFloat(finalInput.value) || 0;
+
+    if (final >= initial) {
+        totalUnitsInput.value = final - initial;
+    } else {
+        totalUnitsInput.value = "";
+    }
+}
+
+initialInput.addEventListener("input", calculateTotalUnits);
+finalInput.addEventListener("input", calculateTotalUnits);
+
+// ✅ Form Submit
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const initial = parseFloat(initialInput.value);
+    const final = parseFloat(finalInput.value);
+
+    if (final < initial) {
+        alert("Final reading cannot be less than Initial reading!");
+        return;
+    }
+
+    loadingSpinner.style.display = "block";
+
+    const formData = {
+        location: document.getElementById("location").value,
+        month_year: document.getElementById("month_year").value,
+        initial_reading: initialInput.value,
+        final_reading: finalInput.value,
+        voltage: document.getElementById("voltage").value,
+        current: document.getElementById("current").value,
+        total_units: totalUnitsInput.value
+    };
+
+    fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert("Data submitted successfully!");
+        form.reset();
+        totalUnitsInput.value = "";
+        loadingSpinner.style.display = "none";
+    })
+    .catch(error => {
+        alert("Error submitting data!");
+        loadingSpinner.style.display = "none";
+    });
+});
+</script>
+
+
+
+</body>
+</html>
+
+
+
