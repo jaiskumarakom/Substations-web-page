@@ -14,13 +14,15 @@
 
         /* Page Layout */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #fefae0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    font-family: Arial, sans-serif;
+    background-color: #fefae0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    min-height: 100dvh; /* modern browsers */
+}
 
         /* Container Styling */
         .container {
@@ -29,6 +31,7 @@
     border-radius: 10px;
     width: 90%;
     max-width: 500px;
+	position: relative;
 
     border: 10px solid transparent;
 
@@ -54,8 +57,8 @@
 .container::before {
     content: "";
     position: absolute;
-    inset: -5px; /* border thickness */
-    border-radius: 15px;
+    inset: -10px; /* border thickness */
+    border-radius: 10px;
     background: linear-gradient(90deg, #00d4ff, #7c00ff, #00d4ff);
     background-size: 300% 300%;
     z-index: -1;
