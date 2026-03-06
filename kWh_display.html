@@ -32,41 +32,7 @@
     font-family: Arial, sans-serif;
 }
 
-#backBtn {
-    padding: 8px 16px;
-    font-weight: bold;
-    color: white;
-    border: 1px solid #0b3d91;
-    border-radius: 6px;
-    cursor: pointer;
 
-    /* 3D gradient background */
-    background: linear-gradient(to bottom, #4facfe, #003f88);
-
-    /* Light/gloss effect */
-    box-shadow:
-        inset 0 2px 4px rgba(255,255,255,0.6),
-        inset 0 -3px 6px rgba(0,0,0,0.4),
-        0 4px 6px rgba(0,0,0,0.5);
-
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-
-    transition: all 0.2s ease;
-}
-
-#backBtn:hover {
-    background: linear-gradient(to bottom, #6ec1ff, #0056b3);
-    box-shadow:
-        inset 0 2px 6px rgba(255,255,255,0.8),
-        inset 0 -3px 6px rgba(0,0,0,0.5),
-        0 6px 10px rgba(0,0,0,0.6);
-}
-
-#backBtn:active {
-    transform: translateY(2px);
-    box-shadow:
-        inset 0 2px 4px rgba(0,0,0,0.5);
-}
 
 #totalUnits {
     font-weight: bold;
@@ -147,11 +113,12 @@ table tbody tr {
         <option value="">All Locations</option>
     </select>
 
-    <input type="text" id="yearFilter" placeholder="Filter by Year">
+	<select id="yearFilter">
+    <option value="">All Years</option>
+	</select>
 
     <input type="text" id="totalUnits" placeholder="Total kWh" readonly>
 
-    <button id="backBtn">BACK</button>
 </div>
     <div class="table-container">
         <table id="dataTable">
@@ -218,6 +185,17 @@ table tbody tr {
     });
 }
 
+function populateYears() {
+    const yearSelect = document.getElementById("yearFilter");
+
+    for (let year = 2024; year <= 2034; year++) {
+        const option = document.createElement("option");
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
+    }
+}
+
 function populateLocations(data) {
     const locationSelect = document.getElementById("locationFilter");
     const locations = [...new Set(data.map(row => row[0]))]; // unique locations
@@ -258,16 +236,14 @@ function populateLocations(data) {
     document.getElementById("totalUnits").value = Math.round(totalUnits) + " kWh";
 }
 
-document.getElementById("backBtn").addEventListener("click", function () {
-    window.location.href = "kWh Reading.html";
-});
 
         // Add event listeners to filters
         document.getElementById('locationFilter').addEventListener('input', filterData);
         document.getElementById('yearFilter').addEventListener('input', filterData);
 
         // Fetch data on load
-        fetchData();
+        populateYears();
+		fetchData();
     </script>
 </body>
 </html>
