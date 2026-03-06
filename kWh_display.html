@@ -153,7 +153,8 @@ table tbody tr {
 
         allData = (json.data || []).reverse();
 
-        populateLocations(allData); // fill dropdown
+        populateLocations(allData);
+        populateYears(allData);   // <-- ADD THIS
         displayData(allData);
 
     } catch (error) {
@@ -185,15 +186,23 @@ table tbody tr {
     });
 }
 
-function populateYears() {
+
+
+function populateYears(data) {
     const yearSelect = document.getElementById("yearFilter");
 
-    for (let year = 2024; year <= 2034; year++) {
-        const option = document.createElement("option");
-        option.value = year;
-        option.textContent = year;
-        yearSelect.appendChild(option);
-    }
+    const years = [...new Set(
+        data.map(row => (row[1] || '').split('-')[0])
+    )].sort().reverse();
+
+    years.forEach(year => {
+        if (year) {
+            const option = document.createElement("option");
+            option.value = year;
+            option.textContent = year;
+            yearSelect.appendChild(option);
+        }
+    });
 }
 
 function populateLocations(data) {
@@ -242,7 +251,7 @@ function populateLocations(data) {
         document.getElementById('yearFilter').addEventListener('input', filterData);
 
         // Fetch data on load
-        populateYears();
+        
 		fetchData();
     </script>
 </body>
